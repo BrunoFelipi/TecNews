@@ -1,0 +1,73 @@
+<div ng-controller="homeCtrl" class="page-flexbox-wrapper">
+
+    <!-- Header -->
+    <header class="no-select">
+        <navbar selected="home"></navbar>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col s6 m6 l6 ">
+                    <div class="input-field">
+                        <input id="pesquisa" ng-model="pesquisa" placeholder="Titulo, conteúdo, data, tag..." type="text" class="validate">
+                        <label for="pesquisa">Pesquisar</label>
+                    </div>
+                </div>
+                <div class="col s6 m6 l6">
+                    <div class="input-field">
+                        <select ng-model="pesquisaTipo" class="icons">
+                          <option value="" selected>Todos</option>
+                          <option value="Ajustes" data-icon="resources/Ajustes.jpg" class="left circle">Ajustes</option>
+                          <option value="FTP" data-icon="resources/FTP.jpg" class="left circle">FTP</option>
+                          <option value="Liberação" data-icon="resources/Liberação.jpg" class="left circle">Liberação</option>
+                          <option value="Outros" data-icon="resources/Outros.jpg" class="left circle">Outros</option>
+                        </select>
+                        <label>Tipo</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="card horizontal" ng-repeat="publicacao in publicacoes | filter: pesquisa | filter:{tipo: pesquisaTipo} | filter:{ativo: 1}">
+                <div class="card-image hide-on-small-only">
+                    <img ng-src="resources/{{publicacao.tipo}}.jpg" width="300px" height="300px" alt="Error" />
+                    <span class="card-title">{{publicacao.tipo}}</span>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h5>{{publicacao.titulo}}</h5>
+                        {{publicacao.conteudo}}
+                        <br><br>
+                        <b>Tags:</b>
+                        <br>{{publicacao.tag}}
+                    </div>
+                    <div class="card-action">
+                        <a href="#/publicacao/{{publicacao.id}}" class="teal-text">Leia Mais...</a>
+                        <span class="right teal-text text-lighten-2">{{ publicacao.data | date: "dd/MM/yyyy HH:mm:ss" }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão fixo -->
+        <a ng-click="openEmailView()" id="add" class="btn-floating btn-large waves-effect waves-light teal tooltipped" data-position="left" data-tooltip="Receba nossos emails"><i class="material-icons">mail</i></a>
+
+    </main>
+
+    <!-- Footes -->	
+    <footer class="page-footer teal">
+        <footer></footer>
+    </footer>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#pesquisa').focus();
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav('hide');
+    $('select').material_select();
+    $('.tooltipped').tooltip({delay: 50});
+});
+</script>

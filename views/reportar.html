@@ -1,0 +1,94 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#texto').focus();
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav('hide');
+    $('#texto').characterCounter();
+});
+</script>
+<div class="page-flexbox-wrapper">
+
+    <!-- Header -->
+    <header>
+        <nav class="nav-wrapper teal ">
+            <div class="container">
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a href="#/home" class="brand-logo">TecNews</a>
+                <ul class="right hide-on-med-and-down">
+                    <li class=""><a href="#/home">Home</a></li>
+                    <li class=""><a href="#/login">Login</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="#/home">Home</a></li>
+                    <li><a href="#/login">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <form name="form">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m10 l10 offset-m1 offset-l1">
+                        <div class="card horizontal">
+                            <div class="card-image hide-on-small-only">
+                                <img src="resources/Ajustes.jpg" width="350px" height="350px" alt="Error" />
+                                <span class="card-title">TecNews</span>
+                            </div>
+
+                            <!-- Card -->
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h5>Reporte Erro/Sugestão</h5>
+                                    <br>
+                                    <div class="input-field">
+                                        <textarea id="texto" type="text" name="texto" length="200" maxlength="200" class="materialize-textarea" required></textarea>
+                                        <label for="texto">Erro/Sugestão</label>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Enviar</button>
+                                    <a href="#/home" class="right btn-flat red-text waves-effect waves-red">Cancelar</a>
+                                </div>
+                            </div>
+                            <!-- /Card -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footes -->
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">TecNews</h5>
+                    <p class="grey-text text-lighten-4">
+                        Fique por dentro de todas as notícias da Tecnologia da Senior.
+                        Queremos disponibilizar a vocês uma fonte centralizada de informações como Liberações para Mercado,
+                        Produto, e muito mais. Participem!
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="http://www.senior.com.br/">Senior Sistemas</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://www.materializecss.com/">Materialize Css</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://documentacao.senior.com.br/">Documentação Senior</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#/reportar">Reporte um Erro/Sugestão</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2016 Copyright - Vinícius Reif - Bruno Souza
+            </div>
+        </div>
+    </footer>
+
+</div>

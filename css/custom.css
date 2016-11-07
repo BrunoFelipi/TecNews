@@ -1,0 +1,71 @@
+#add {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 999;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.borderred {
+    border-right: solid #f44336;
+}
+
+.bordergreen {
+    border-right: solid #4caf50;
+}
+
+#progress {
+    position: absolute;
+    top: 55px;
+}
+
+@media only screen and (max-width: 500px) {
+    #progress {
+        top: 49px;
+    }
+}
+
+.page-flexbox-wrapper {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+
+ main {
+   flex: 1 0 auto;
+ }
+ 
+
+ .admin header{
+     padding-left: 300px;
+ }
+
+ .admin main{
+     padding-left: 300px;
+ }
+
+ .admin footer{
+     padding-left: 300px;
+ }
+
+ @media only screen and (max-width : 992px) {
+     .admin header{
+         padding-left: 0px;
+     }
+
+     .admin main{
+         padding-left: 0px;
+     }
+
+     .admin footer{
+         padding-left: 0px;
+     }
+ }

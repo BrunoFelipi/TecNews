@@ -1,0 +1,83 @@
+<div ng-controller="emailCtrl" class="page-flexbox-wrapper">
+
+    <!-- Header -->
+    <header>
+        <navbar selected="email"></navbar>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <form name="form" ng-submit="cadastrar()">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m10 l10 offset-m1 offset-l1">
+                        <div class="card horizontal">
+
+                            <!-- Card -->
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <h5 class="light">Receba nossos emails</h5>
+                                    <p>
+                                        A cada nova publicação, um novo email. Não perca.
+                                    </p>
+
+                                    <br>
+                                    <div class="input-field">
+                                        <input id="email" type="email" name="email" class="validate" ng-model="email" required>
+                                        <label for="email" data-error="E-mail inválido">E-mail</label>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Cadastrar</button>
+                                    <a href="#/home" class="waves-effect waves-red btn-flat right red-text">Cancelar</a>
+                                </div>
+                            </div>
+                            <!-- /Card -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </main>
+
+    <!-- Footes -->
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">TecNews</h5>
+                    <p class="grey-text text-lighten-4">
+                        Fique por dentro de todas as notícias da Tecnologia da Senior.
+                        Queremos disponibilizar a vocês uma fonte centralizada de informações como Liberações para Mercado,
+                        Produto, e muito mais. Participem!
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="http://www.senior.com.br/">Senior Sistemas</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://www.materializecss.com/">Materialize Css</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://documentacao.senior.com.br/">Documentação Senior</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#/reportar">Reporte um Erro/Sugestão</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2016 Copyright - Vinícius Reif - Bruno Souza
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#pesquisa').focus();
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav('hide');
+    $('select').material_select();
+    $('.tooltipped').tooltip({delay: 50});
+});
+</script>

@@ -1,0 +1,137 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('select').material_select();
+    $('#pesquisa').focus();
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav('hide');
+    $('.modal-trigger').leanModal();
+});
+</script>
+<div ng-controller="listarCtrl" class="page-flexbox-wrapper admin">
+    <!-- Header -->
+    <header>
+        <nav class="teal">
+            <div class="container">
+                <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
+
+                <ul id="sideNav" class="side-nav fixed">
+                    <li>
+                        <div class="userView">
+                            <img class="background" src="resources/teal-bk.png">
+                            <a href=""><img class="circle" src="resources/keyboard.png"></a>
+                            <a href=""><span class="white-text name">TecNews</span></a>
+                            <a href=""><span class="white-text email">{{usuarioLogado.email}}</span></a>
+                        </div>
+                    </li>
+                    <li class="active"><a href="#/listar">Listar</a></li>
+                    <li><a href="#/publicar/add">Publicar</a></li>
+                    <li><a href="#/usuarios">Usuários</a></li>
+                    <li><a href="#/alterarSenha">Senhas</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#/home">Sair</a></li>
+                </ul>
+            </div>
+			<div class="nav-wrapper">
+				<a href="#/home" class="brand-logo center">TecNews Admin</a>
+			</div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <br>
+        <div class="container">
+            <h5>Listar</h5>
+            <hr>
+			<br>
+            <div class="row">
+                <div class="col s6 m6 l6 ">
+                    <div class="input-field">
+                        <input id="pesquisa" ng-model="pesquisa" placeholder="Titulo, conteúdo, data, tag..." type="text" class="validate">
+                        <label for="pesquisa">Pesquisar</label>
+                    </div>
+                </div>
+                <div class="col s6 m6 l6">
+                    <div class="input-field">
+                        <select ng-model="pesquisaTipo" class="icons">
+                          <option value="" selected>Todos</option>
+                          <option value="Ajustes" data-icon="resources/Ajustes.jpg" class="left circle">Ajustes</option>
+                          <option value="FTP" data-icon="resources/FTP.jpg" class="left circle">FTP</option>
+                          <option value="Liberação" data-icon="resources/Liberação.jpg" class="left circle">Liberação</option>
+                          <option value="Outros" data-icon="resources/Outros.jpg" class="left circle">Outros</option>
+                        </select>
+                        <label>Tipo</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Cards -->
+            <div class="card horizontal" ng-repeat="publicacao in publicacoes | filter: pesquisa | filter:{tipo: pesquisaTipo}" ng-class="{'borderred':publicacao.ativo==0}">
+				<div class="card-image hide-on-med-and-down">
+                    <img ng-src="resources/{{publicacao.tipo}}.jpg" width="300px" height="300px" alt="Error" />
+                    <span class="card-title">{{publicacao.tipo}}</span>
+                </div>
+				<div class="card-stacked">
+					<div class="card-content">
+						<h5>{{publicacao.tipo}} - {{publicacao.titulo}}</h5>
+						{{publicacao.conteudo}}
+						<br><br>
+						<b>Tags:</b>
+						<br>{{publicacao.tag}}
+					</div>
+					<div class="card-action">
+						<a href="#/publicar/edit/{{publicacao.id}}" class="teal-text">Editar</a>
+						<a href="" ng-show="show" ng-if="publicacao.ativo == 1" class="red-text" ng-click="desativar(publicacao)">Desativar</a>
+						<a href="" ng-show="show" ng-if="publicacao.ativo == 0" class="teal-text" ng-click="desativar(publicacao)">Ativar</a>
+                        <a href="#modalExcluir" ng-click="setPublicacaoExcluir(publicacao)" ng-show="show" ng-if="publicacao.ativo == 0" class="red-text modal-trigger">Excluir</a>
+                        <span class="right teal-text text-lighten-2">{{publicacao.data}}</span>
+					</div>
+				</div>
+            </div>
+        </div>
+
+        <!-- Botão fixo -->
+        <a href="#/publicar/add" id="add" class="btn-floating btn-large waves-effect waves-light teal"><i class="material-icons">add</i></a>
+
+        <!-- Modal Structure -->
+        <div id="modalExcluir" class="modal">
+            <div class="modal-content">
+                <h5 class="light">Deseja excluir a publicação?</h5>
+            </div>
+            <div class="modal-footer">
+                <a ng-click="excluirPublicacao()" class="modal-action modal-close waves-effect waves-teal left btn-flat teal-text">Sim</a>
+                <a ng-click="" class="modal-action modal-close waves-effect waves-red right btn-flat red-text">Não</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footes -->
+    <footer class="page-footer teal">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">TecNews</h5>
+                    <p class="grey-text text-lighten-4">
+                        Fique por dentro de todas as notícias da Tecnologia da Senior.
+                        Queremos disponibilizar a vocês uma fonte centralizada de informações como Liberações para Mercado,
+                        Produto, e muito mais. Participem!
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="http://www.senior.com.br/">Senior Sistemas</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://www.materializecss.com/">Materialize Css</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://documentacao.senior.com.br/">Documentação Senior</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#/reportar">Reporte um Erro/Sugestão</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2016 Copyright - Vinícius Reif - Bruno Souza
+            </div>
+        </div>
+    </footer>
+</div>

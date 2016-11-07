@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<!-- Metas -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<!-- JQuery-->
+		<script src="js\jquery-3.1.0.min.js"></script>
+
+		<!-- Materialize -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="css/materialize.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+		<!-- Custom -->
+		<link rel="stylesheet" href="css/custom.css">
+		<script src="js/jquery.mask.js" type="text/javascript"></script>
+		<script src="js/script.js" type="text/javascript"></script>
+
+		<!-- JS -->
+		<script src="js/angular.min.js" type="text/javascript"></script>
+		<script src="js/angular-animate.min.js" type="text/javascript"></script>
+		<script src="js/angular-route.js" type="text/javascript"></script>
+
+		<!-- Config -->
+		<script src="config/app.js" type="text/javascript"></script>
+		<script src="config/route.js" type="text/javascript"></script>
+		<script src="config/run.js" type="text/javascript"></script>
+
+		<!-- Angular -->
+		<script src="controllers/loginCtrl.js" type="text/javascript"></script>
+		<script src="controllers/registroCtrl.js" type="text/javascript"></script>
+		<script src="controllers/homeCtrl.js" type="text/javascript"></script>
+		<script src="controllers/publicacaoCtrl.js" type="text/javascript"></script>
+		<script src="controllers/listarCtrl.js" type="text/javascript"></script>
+		<script src="controllers/usuariosCtrl.js" type="text/javascript"></script>
+		<script src="controllers/alterarSenhaCtrl.js" type="text/javascript"></script>
+		<script src="controllers/publicarCtrl.js" type="text/javascript"></script>
+		<script src="controllers/emailCtrl.js" type="text/javascript"></script>
+		<script src="services/UsuarioService.js" type="text/javascript"></script>
+		<script src="services/PublicacaoService.js" type="text/javascript"></script>
+		<script src="services/SessaoService.js" type="text/javascript"></script>
+		<script src="services/RegistroService.js" type="text/javascript"></script>
+		<script src="services/EmailService.js" type="text/javascript"></script>
+		
+		<!-- Diretivas -->
+		<script src="directives/navbar.js" type="text/javascript"></script>		
+		<script src="directives/footer.js" type="text/javascript"></script>
+
+		<!-- toastr -->
+		<script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+	</head>
+
+	<body ng-app="app">
+		<ng-view></ng-view>
+	</body>
+</html>
