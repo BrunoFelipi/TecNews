@@ -13,11 +13,17 @@ app.factory('EmailService', function($http){
                 url: 'ws/email/selectAll.php'
             });
         },
-        enviarEmailCadastroSucesso: function(email){
+        existEmail: function(email){
+            return $http({
+                method: 'post',
+                url: 'ws/email/existEmail.php'
+            });
+        },
+        enviarEmailCadastroSucesso: function(email, nome){
             return $http({
                 method: 'post',
                 url: 'ws/email/enviarEmailCadastroSucesso.php',
-                data: {email: email}
+                data: {email: email, nome: nome}
             });
         },
         enviarEmailNovaPublicacao: function(de, para, tipo, titulo, conteudo, tag){

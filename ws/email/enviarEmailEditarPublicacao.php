@@ -50,17 +50,27 @@
 		$mail->MsgHTML("A publicação <b>$tipo - $titulo</b> foi alterada:
 						<br>
 						<br>
-						<b>Tipo:</b><br>$tipo
+						<b>Tipo:</b>
+						<br>
+						$tipo
 						<br>
 						<br>
-						<b>Titulo:</b><br>$titulo
+						<b>Titulo:</b>
+						<br>
+						$titulo
 						<br>
 						<br>
-						<b>Conteúdo:</b><br>$conteudo
+						<b>Conteúdo:</b>
+						<br>
+						$conteudo
 						<br>
 						<br>
-						<b>Tags:</b><br>$tag
-						<br>");
+						<b>Tags:</b>
+						<br>
+						$tag
+						<br>
+						<br>
+						<p>Se desejar, <a href='http://www.w3schools.com/html/'>Clique aqui</a> para remover seu email da lista.</p>");
 
 		////Caso queira colocar o conteudo de um arquivo utilize o método abaixo ao invés da mensagem no corpo do e-mail.
 		//$mail->MsgHTML(file_get_contents('arquivo.html'));

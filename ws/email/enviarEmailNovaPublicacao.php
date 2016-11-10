@@ -73,7 +73,7 @@
 						$tag
 						<br>
 						<br>
-						<p><a href='http://www.w3schools.com/html/'>Clique aqui para remover seu email da lista.</a></p>
+						<p>Se desejar, <a href='http://www.w3schools.com/html/'>Clique aqui</a> para remover seu email da lista.</p>
 
 						");
 

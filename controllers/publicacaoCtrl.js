@@ -24,7 +24,10 @@ app.controller('publicacaoCtrl', function($scope, $rootScope, PublicacaoService,
         var aux = $scope.publicacao.tag.split(" ");
 
         for(var i=0; i<aux.length;i++){
-            $scope.tags.push(aux[i]);
+
+            if(aux[i].length != 0){
+                $scope.tags.push(aux[i]);
+            }
         }
     }
 

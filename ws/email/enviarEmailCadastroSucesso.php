@@ -1,6 +1,7 @@
 <?php
 	$data = json_decode(file_get_contents('php://input'), true);
 	$email = $data['email'];
+	$nome = $data['nome'];
 
 	//Inclui o arquivo class.phpmailer.php localizado na pasta do phpmailer
 	//require_once("../phpmailer/class.phpmailer.php");
@@ -41,7 +42,7 @@
 		//$mail->AddAttachment('images/phpmailer.gif');      // Adicionar um anexo
 
 		//Define o corpo do email
-		$mail->MsgHTML('Olá '.$email.'.<br><br>Você está cadastrado no TecNews. A partir de agora você passará a receber nosso email a cada nova publicação.');
+		$mail->MsgHTML('Olá '.$nome.'.<br><br>Você está cadastrado no TecNews. A partir de agora você passará a receber nosso email a cada nova publicação.');
 
 		////Caso queira colocar o conteudo de um arquivo utilize o método abaixo ao invés da mensagem no corpo do e-mail.
 		//$mail->MsgHTML(file_get_contents('arquivo.html'));

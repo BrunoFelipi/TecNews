@@ -1,5 +1,6 @@
 <?php
     include '../conexao.php';
+	require '../../vendor/autoload.php';
 
     session_start();
     $token = $_SESSION['token'];
