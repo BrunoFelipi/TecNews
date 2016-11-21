@@ -13,10 +13,18 @@ app.factory('EmailService', function($http){
                 url: 'ws/email/selectAll.php'
             });
         },
+        selectEmail: function(token){
+            return $http({
+                method: 'post',
+                url: 'ws/email/selectEmail.php',
+                data: {token: token}
+            });
+        },
         existEmail: function(email){
             return $http({
                 method: 'post',
-                url: 'ws/email/existEmail.php'
+                url: 'ws/email/existEmail.php',
+                data: {email: email}
             });
         },
         enviarEmailCadastroSucesso: function(email, nome){
@@ -26,19 +34,26 @@ app.factory('EmailService', function($http){
                 data: {email: email, nome: nome}
             });
         },
-        enviarEmailNovaPublicacao: function(de, para, tipo, titulo, conteudo, tag){
+        enviarEmailNovaPublicacao: function(de, para, tipo, titulo, conteudo, tag, nomeImagem){
             return $http({
                 method: 'post',
                 url: 'ws/email/enviarEmailNovaPublicacao.php',
-                data: {de: de, para: para, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag}
+                data: {de: de, para: para, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag, nomeImagem: nomeImagem}
             });
         },
 
-        enviarEmailEditarPublicacao: function(de, para, tipo, titulo, conteudo, tag){
+        enviarEmailEditarPublicacao: function(de, para, tipo, titulo, conteudo, tag, nomeImagem){
             return $http({
                 method: 'post',
                 url: 'ws/email/enviarEmailEditarPublicacao.php',
-                data: {de: de, para: para, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag}
+                data: {de: de, para: para, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag, nomeImagem: nomeImagem}
+            });
+        },
+        deleteEmail: function(email){
+            return $http({
+                method: 'post',
+                url: 'ws/email/delete.php',
+                data: {email: email}
             });
         },
 

@@ -1,0 +1,25 @@
+<nav class="nav-wrapper teal">
+    <div class="container">
+        <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
+
+        <ul id="sideNav" class="side-nav fixed">
+            <li>
+                <div class="userView">
+                    <img class="background" src="resources/teal-bk.png">
+                    <a href=""><img class="circle" src="resources/keyboard.png"></a>
+                    <a href=""><span class="white-text name">TecNews</span></a>
+                    <a href=""><span class="white-text email">{{usuarioLogado.email}}</span></a>
+                </div>
+            </li>
+            <li ng-class="{'active': selected=='listar'}"><a class="waves-effect" href="#/listar">Listar</a></li>
+            <li ng-class="{'active': selected=='publicar'}"><a class="waves-effect" href="#/publicar/add">Publicar</a></li>
+            <li ng-class="{'active': selected=='usuarios'}"><a class="waves-effect" href="#/usuarios">Usuários</a></li>
+            <li ng-class="{'active': selected=='senhas'}"><a class="waves-effect" href="#/alterarSenha">Senhas</a></li>
+            <li class="divider"></li>
+            <li class><a class="waves-effect" ng-click="sair()">Sair</a></li>
+        </ul>
+    </div>
+    <div class="nav-wrapper">
+        <a href="#/listar" class="brand-logo light center">TecNews Admin</a>
+    </div>
+</nav>

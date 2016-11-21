@@ -6,6 +6,7 @@
     $titulo = $data['titulo'];
     $conteudo = $data['conteudo'];
     $tag = $data['tag'];
+	$nomeImagem = $data['nomeImagem'];
 	$token = md5($de);
 
 	//Inclui o arquivo class.phpmailer.php localizado na pasta do phpmailer
@@ -47,30 +48,82 @@
 		//$mail->AddAttachment('images/phpmailer.gif');      // Adicionar um anexo
 
 		//Define o corpo do email
-		$mail->MsgHTML("A publicação <b>$tipo - $titulo</b> foi alterada:
-						<br>
-						<br>
-						<b>Tipo:</b>
-						<br>
-						$tipo
-						<br>
-						<br>
-						<b>Titulo:</b>
-						<br>
-						$titulo
-						<br>
-						<br>
-						<b>Conteúdo:</b>
-						<br>
-						$conteudo
-						<br>
-						<br>
-						<b>Tags:</b>
-						<br>
-						$tag
-						<br>
-						<br>
-						<p>Se desejar, <a href='http://www.w3schools.com/html/'>Clique aqui</a> para remover seu email da lista.</p>");
+		$mail->MsgHTML("
+
+			<body bgcolor='#FFFFFF' topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'>
+
+				<!-- HEADER -->
+				<table class='head-wrap'>
+					<tr>
+						<td></td>
+						<td class='header container' align=''>
+
+							<!-- /content -->
+							<div class='content'>
+								<table>
+									<tr>
+										<td><img src='../../resources/logo.png' style='width: 100%'/></td>
+									</tr>
+								</table>
+							</div><!-- /content -->
+
+						</td>
+						<td></td>
+					</tr>
+				</table><!-- /HEADER -->
+
+				<!-- BODY -->
+				<table class='body-wrap' bgcolor=''>
+					<tr>
+						<td></td>
+						<td class='container' align='' bgcolor='#FFFFFF'>
+
+							<!-- content -->
+							<div class='content'>
+
+								<table bgcolor=''>
+									<tr>
+										<td class='small' width='20%' style='vertical-align: top; padding-right:10px;'><img width='200px' height='200px' src='../../resources/$nomeImagem.jpg' /></td>
+										<td class='small' style='vertical-align: top'>
+											<h4><b>$tipo</b> - $titulo</h4>
+											<p class=''>$conteudo</p>
+											<br>
+											<h4><b>Tags</b></h4>
+											<p class=''>$tag</p>
+										</td>
+									</tr>
+								</table>
+
+							</div><!-- /content -->
+						</td>
+						</tr>
+				</table><!-- /BODY -->
+
+				<!-- FOOTER -->
+				<table class='footer-wrap'>
+					<tr>
+						<td></td>
+						<td class='container'>
+
+							<!-- content -->
+							<div class='content'>
+								<table>
+									<tr>
+										<td align='center'>
+											<p>
+												<h5><a href='http://pcbnu006300/TecNews/#/removerEmail/$token'>Cancelar inscrição</a></h5>
+											</p>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td></td>
+					</tr>
+				</table>
+			</body>
+
+						");
 
 		////Caso queira colocar o conteudo de um arquivo utilize o método abaixo ao invés da mensagem no corpo do e-mail.
 		//$mail->MsgHTML(file_get_contents('arquivo.html'));

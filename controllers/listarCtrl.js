@@ -4,9 +4,10 @@ app.controller('listarCtrl',function($scope, $rootScope, PublicacaoService, Sess
     SessaoService.validar();
 
     $scope.publicacaoExcluir = {};
-    $scope.publicacoes = {};
+    $scope.publicacoes = [];
     $scope.usuarioLogado = {};
     $scope.show = true;
+    $scope.progresso = false;
 
     $scope.setPublicacaoExcluir = function(publicacao){
         $scope.publicacaoExcluir = publicacao;
@@ -33,12 +34,14 @@ app.controller('listarCtrl',function($scope, $rootScope, PublicacaoService, Sess
 
     //Inicializar
     var init = function(){
+        $scope.progresso = true;
         var promise = PublicacaoService.selectAll();
         promise.then(function(response){
             $scope.publicacoes = response.data;
             usuarios();
         }, function(error){
             Materialize.toast('Erro de conexão com o Servidor ao carregar as publicações',2000);
+            $scope.progresso = false;
         });
     };
 
@@ -47,8 +50,10 @@ app.controller('listarCtrl',function($scope, $rootScope, PublicacaoService, Sess
         var promise = UsuarioService.select();
         promise.then(function(response){
             $scope.usuarioLogado = response.data[0];
+            $scope.progresso = false;
         }, function(error){
             Materialize.toast('Erro de conexão com o Servidor ao carregar as publicações',2000);
+            $scope.progresso = false;
         });
     };
     init();

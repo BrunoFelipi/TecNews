@@ -1,0 +1,29 @@
+<nav>
+    <div class="nav-wrapper teal">
+        <div class="container">
+            <ul class="left">
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a href="#/home" class="brand-logo light">TecNews</a>
+            </ul>
+
+            <ul class="right hide-on-med-and-down">
+                <li ng-class="{'active':selected=='home'}"><a href="#/home">Home</a></li>
+                <li ng-class="{'active':selected=='email'}"><a href="#/email">Email</a></li>
+                <li ng-class="{'active':selected=='login'}"><a href="#/login">Login</a></li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li>
+                    <div class="userView">
+                        <img class="background" src="resources/teal-bk.png">
+                        <a href=""><img class="circle" src="resources/keyboard.png"></a>
+                        <a href=""><span class="white-text name">TecNews</span></a>
+                        <a href=""><span class="white-text email">Noticias da Tecnologia Senior Sistemas</span></a>
+                    </div>
+                </li>
+                <li class="active"><a href="#/home" class="waves-effect">Home</a></li>
+                <li><a href="#/email" class="waves-effect">Email</a></li>
+                <li><a href="#/login" class="waves-effect">Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -4,7 +4,7 @@
 
     $email = $data['email'];
 
-    $sql = "SELECT id, email, token FROM email WHERE email='bruno.souza@senior.com.br'";
+    $sql = "SELECT id, email, token FROM email WHERE email='$email' GROUP BY email";
 
     $rs = mysqli_query($conexao, $sql);
 

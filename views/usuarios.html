@@ -2,31 +2,7 @@
 
     <!-- Header -->
     <header>
-        <nav class="nav-wrapper teal">
-            <div class="container">
-                <a href="" data-activates="sideNav" class="button-collapse show-on-small"><i class="material-icons">menu</i></a>
-
-                <ul id="sideNav" class="side-nav fixed">
-                    <li>
-                        <div class="userView">
-                            <img class="background" src="resources/teal-bk.png">
-                            <a href=""><img class="circle" src="resources/keyboard.png"></a>
-                            <a href=""><span class="white-text name">TecNews</span></a>
-                            <a href=""><span class="white-text email">{{usuarioLogado.email}}</span></a>
-                        </div>
-                    </li>
-                    <li><a href="#/listar">Listar</a></li>
-                    <li><a href="#/publicar/add">Publicar</a></li>
-                    <li class="active"><a href="#/usuarios">Usuários</a></li>
-                    <li><a href="#/alterarSenha">Senhas</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#/home">Sair</a></li>
-                </ul>
-            </div>
-			<div class="nav-wrapper">
-				<a href="#/home" class="brand-logo center">TecNews Admin</a>
-			</div>
-        </nav>
+        <tn-sidenav selected="usuarios" usuario-logado="usuarioLogado"></tn-sidenav>
     </header>
 
     <!-- Main -->
@@ -68,34 +44,7 @@
     </main>
 
     <!-- Footes -->
-    <footer class="page-footer teal">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">TecNews</h5>
-                    <p class="grey-text text-lighten-4">
-                        Fique por dentro de todas as notícias da Tecnologia da Senior.
-                        Queremos disponibilizar a vocês uma fonte centralizada de informações como Liberações para Mercado,
-                        Produto, e muito mais. Participem!
-                    </p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="http://www.senior.com.br/">Senior Sistemas</a></li>
-                        <li><a class="grey-text text-lighten-3" href="http://www.materializecss.com/">Materialize Css</a></li>
-                        <li><a class="grey-text text-lighten-3" href="http://documentacao.senior.com.br/">Documentação Senior</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#/reportar">Reporte um Erro/Sugestão</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2016 Copyright - Vinícius Reif - Bruno Souza
-            </div>
-        </div>
-    </footer>
+    <tn-footer></tn-footer>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

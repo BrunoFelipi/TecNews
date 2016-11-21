@@ -3,11 +3,11 @@ app.controller('usuariosCtrl',function($scope, $rootScope, RegistroService, Usua
     //Validar Sessão
     SessaoService.validar();
 
-    $scope.usuarios = {};
+    $scope.usuarios = [];
     $scope.usuarioLogado = {};
 
     //Carregar usuarios
-    var init = function(){
+    var carregarUsuarios = function(){
         var promise = UsuarioService.select();
         promise.then(function(response){
             $scope.usuarioLogado = response.data[0];
@@ -15,7 +15,7 @@ app.controller('usuariosCtrl',function($scope, $rootScope, RegistroService, Usua
             toastr.error('Erro de conexão com o Servidor ao trazer usuario','Erro');
         });
     };
-    init();
+    carregarUsuarios();
 
     //Init
     var init = function(){

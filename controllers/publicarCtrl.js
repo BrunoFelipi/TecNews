@@ -47,16 +47,22 @@ app.controller('publicarCtrl', function($scope, $rootScope, PublicacaoService, S
     getCurrentUserId();
 
     var enviarEmailNovaPublicacao = function(publicacao){
-        $scope.usuariosEnviarEmail = {};
+        $scope.usuariosEnviarEmail = [];
 
         var promise = EmailService.selectAll();
+
+        if(publicacao.tipo === 'Liberação'){
+            $scope.nomeImg = 'Liberacao';
+        } else {
+            $scope.nomeImg = publicacao.tipo;
+        }
 
         promise.then(function(response){
             $scope.usuariosEnviarEmail = response.data;
 
             for(var i=0; i < $scope.usuariosEnviarEmail.length; i++){
 
-                var promise = EmailService.enviarEmailNovaPublicacao($scope.usuarioLogado.email, $scope.usuariosEnviarEmail[i].email, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags);
+                var promise = EmailService.enviarEmailNovaPublicacao($scope.usuarioLogado.email, $scope.usuariosEnviarEmail[i].email, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags, $scope.nomeImg);
 
                 promise.then(function(response){
                 }, function(error){
@@ -70,19 +76,25 @@ app.controller('publicarCtrl', function($scope, $rootScope, PublicacaoService, S
     }
 
     var enviarEmailEditarPublicacao = function(publicacao){
-        $scope.usuariosEnviarEmail = {};
+        $scope.usuariosEnviarEmail = [];
 
         var promise = EmailService.selectAll();
+
+        if(publicacao.tipo === 'Liberação'){
+            $scope.nomeImg = 'Liberacao';
+        } else {
+            $scope.nomeImg = publicacao.tipo;
+        }
 
         promise.then(function(response){
             $scope.usuariosEnviarEmail = response.data;
 
             for(var i=0; i < $scope.usuariosEnviarEmail.length; i++){
 
-                var promise = EmailService.enviarEmailEditarPublicacao($scope.usuarioLogado.email, $scope.usuariosEnviarEmail[i].email, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags);
+                var promise = EmailService.enviarEmailEditarPublicacao($scope.usuarioLogado.email, $scope.usuariosEnviarEmail[i].email, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags, $scope.nomeImg);
 
                 promise.then(function(response){
-                    console.log(response.data);
+
                 }, function(error){
                     Materialize.toast('Erro de conexão com<br>o Servidor',2000);
                 });

@@ -7,15 +7,6 @@ app.controller('alterarSenhaCtrl',function($scope, $rootScope, UsuarioService, S
 
     //Carregar usuarios
     var init = function(){
-
-		//Easter egg
-        /*
-        var x = Math.floor((Math.random() * 10) + 1);
-		if(x == 1){
-			Materialize.toast('Eu, Bruninho Souza, to muito<br>emocionado hoje! Parabéns pra<br>mim :\'). Fofos...',8000);
-		}
-		*/
-		session();
         var promise = UsuarioService.select();
         promise.then(function(response){
             $scope.usuarioLogado = response.data[0];
@@ -45,88 +36,5 @@ app.controller('alterarSenhaCtrl',function($scope, $rootScope, UsuarioService, S
         });
     };
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	var session = function(){
-        var x = Math.floor((Math.random() * 10) + 1);
-		if(x == 1){
-			Materialize.toast('Eu, Bruninho Souza, to muito<br>emocionado hoje! Parabéns pra<br>mim :\'). Fofos...',8000);
-		}
-	}
 	init();
 });

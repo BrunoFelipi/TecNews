@@ -1,36 +1,11 @@
 <div ng-controller="homeCtrl" class="page-flexbox-wrapper">
 
+    <!-- Progresso -->
+    <tn-progress ng-show="progresso"></tn-progress>
+
     <!-- Header -->
     <header class="no-select">
-        <nav>
-            <div class="nav-wrapper teal">
-                <div class="container">
-                    <ul class="left">
-                        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                        <a href="#/home" class="brand-logo light">TecNews</a>
-                    </ul>
-
-                    <ul class="right hide-on-med-and-down">
-                        <li class="active"><a href="#/home">Home</a></li>
-                        <li><a href="#/email">Email</a></li>
-                        <li><a href="#/login">Login</a></li>
-                    </ul>
-                    <ul class="side-nav" id="mobile-demo">
-                        <li>
-                            <div class="userView">
-                                <img class="background" src="resources/teal-bk.png">
-                                <a href=""><img class="circle" src="resources/keyboard.png"></a>
-                                <a href=""><span class="white-text name">TecNews</span></a>
-                                <a href=""><span class="white-text email">Noticias da Tecnologia Senior Sistemas</span></a>
-                            </div>
-                        </li>
-                        <li class="active"><a href="#/home" class="waves-effect">Home</a></li>
-                        <li><a href="#/email" class="waves-effect">Email</a></li>
-                        <li><a href="#/login" class="waves-effect">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <tn-nav selected="home"></tn-nav>
     </header>
 
     <!-- Main -->
@@ -50,7 +25,7 @@
                           <option value="" selected>Todos</option>
                           <option value="Ajustes" data-icon="resources/Ajustes.jpg" class="left circle">Ajustes</option>
                           <option value="FTP" data-icon="resources/FTP.jpg" class="left circle">FTP</option>
-                          <option value="Liberação" data-icon="resources/Liberação.jpg" class="left circle">Liberação</option>
+                          <option value="Liberação" data-icon="resources/Liberacao.jpg" class="left circle">Liberação</option>
                           <option value="Outros" data-icon="resources/Outros.jpg" class="left circle">Outros</option>
                         </select>
                         <label>Tipo</label>
@@ -61,7 +36,8 @@
             <!-- Cards -->
             <div class="card horizontal" ng-repeat="publicacao in publicacoes | filter: pesquisa | filter:{tipo: pesquisaTipo} | filter:{ativo: 1}">
                 <div class="card-image hide-on-small-only">
-                    <img ng-src="resources/{{publicacao.tipo}}.jpg" width="300px" height="300px" alt="Error" />
+                    <img ng-if="publicacao.tipo != 'Liberação'" ng-src="resources/{{publicacao.tipo}}.jpg" width="300px" height="300px" alt="Error" />
+                    <img ng-if="publicacao.tipo == 'Liberação'" ng-src="resources/Liberacao.jpg" width="300px" height="300px" alt="Error" />
                     <span class="card-title">{{publicacao.tipo}}</span>
                 </div>
                 <div class="card-stacked">
@@ -74,7 +50,7 @@
                     </div>
                     <div class="card-action">
                         <a href="#/publicacao/{{publicacao.id}}" class="teal-text">Leia Mais...</a>
-                        <span class="right teal-text text-lighten-2">{{ publicacao.data | date: "dd/MM/yyyy HH:mm:ss" }}</span>
+                        <span class="right teal-text text-lighten-2">{{ publicacao.data }}</span>
                     </div>
                 </div>
             </div>
@@ -86,9 +62,7 @@
     </main>
 
     <!-- Footes -->
-    <footer class="page-footer teal">
-        <footer></footer>
-    </footer>
+    <tn-footer></tn-footer>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

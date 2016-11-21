@@ -11,35 +11,7 @@ $(document).ready(function() {
 
     <!-- Header -->
     <header>
-        <nav>
-            <div class="nav-wrapper teal">
-                <div class="container">
-                    <ul class="left">
-                        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                        <a href="#/home" class="brand-logo light">TecNews</a>
-                    </ul>
-
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="#/home">Home</a></li>
-                        <li><a href="#/email">Email</a></li>
-                        <li class="active"><a href="#/login">Login</a></li>
-                    </ul>
-                    <ul class="side-nav" id="mobile-demo">
-                        <li>
-                            <div class="userView">
-                                <img class="background" src="resources/teal-bk.png">
-                                <a href=""><img class="circle" src="resources/keyboard.png"></a>
-                                <a href=""><span class="white-text name">TecNews</span></a>
-                                <a href=""><span class="white-text email">Noticias da Tecnologia Senior Sistemas</span></a>
-                            </div>
-                        </li>
-                        <li><a href="#/home" class="waves-effect">Home</a></li>
-                        <li><a href="#/email" class="waves-effect">Email</a></li>
-                        <li class="active"><a href="#/login" class="waves-effect">Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <tn-nav selected="login"></tn-nav>
     </header>
 
     <main>
@@ -77,33 +49,6 @@ $(document).ready(function() {
     </main>
 
     <!-- Footes -->
-    <footer class="page-footer teal">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">TecNews</h5>
-                    <p class="grey-text text-lighten-4">
-                        Fique por dentro de todas as notícias da Tecnologia da Senior.
-                        Queremos disponibilizar a vocês uma fonte centralizada de informações como Liberações para Mercado,
-                        Produto, e muito mais. Participem!
-                    </p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="http://www.senior.com.br/">Senior Sistemas</a></li>
-                        <li><a class="grey-text text-lighten-3" href="http://www.materializecss.com/">Materialize Css</a></li>
-                        <li><a class="grey-text text-lighten-3" href="http://documentacao.senior.com.br/">Documentação Senior</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#/reportar">Reporte um Erro/Sugestão</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2016 Copyright - Vinícius Reif - Bruno Souza
-            </div>
-        </div>
-    </footer>
+    <tn-footer></tn-footer>
 
 </div>
