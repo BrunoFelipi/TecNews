@@ -10,31 +10,21 @@
         <form name="form" ng-submit="cadastrar()">
             <div class="container">
                 <div class="row">
-                    <div class="col s12 m10 l10 offset-m1 offset-l1">
-                        <div class="card horizontal">
-
-                            <!-- Card -->
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h5 class="light">Receba nossos emails</h5>
-                                    <p>
-                                        A cada nova publicação, um novo email. Não perca.
-                                    </p>
-
-                                    <br>
-                                    <div class="input-field">
-                                        <input id="email" type="email" name="email" class="validate" ng-model="email" required>
-                                        <label for="email" data-error="E-mail inválido">E-mail</label>
-                                    </div>
-                                </div>
-                                <div class="card-action">
-                                    <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Cadastrar</button>
-                                    <a href="#/home" class="waves-effect waves-red btn-flat right red-text">Cancelar</a>
-                                </div>
-                            </div>
-                            <!-- /Card -->
-
+                    <div class="col s12 m8 l8 offset-m2 offset-l2">
+                        <br>
+                        <h5 class="light">Receba nossos emails</h5>
+                        <p>
+                            A cada nova publicação, um novo email. Não perca.
+                        </p>
+                        <br>
+                        <div class="input-field">
+                            <input id="email" type="email" name="email" class="validate" ng-model="email" required>
+                            <label for="email" data-error="E-mail inválido">E-mail</label>
                         </div>
+
+                        <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Cadastrar</button>
+                        <a href="#/home" class="waves-effect waves-red btn-flat right red-text">Cancelar</a>
+
                     </div>
                 </div>
             </div>

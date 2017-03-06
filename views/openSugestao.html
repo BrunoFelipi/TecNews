@@ -1,0 +1,81 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('select').material_select();
+    $('#titulo').focus();
+    $('#conteudo').focus();
+        
+    $("input#titulo, input#tag, textarea#conteudo").characterCounter();
+});
+</script>
+
+<style media="screen">
+    header,
+    main,
+    footer {
+        padding-left: 300px;
+    }
+    
+    @media only screen and (max-width: 992px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
+    }
+</style>
+
+<div ng-controller="openSugestaoCtrl" class="page-flexbox-wrapper">
+
+    <!-- Header -->
+    <header>
+        <tn-sidenav selected="sugestoes" usuario-logado="usuarioLogado"></tn-sidenav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <div class="container">
+            <div class="row">
+                <br>
+                <div class="col s12 m12 l12">
+                    <div class="chip">
+                        <img src="resources/{{sugestao.tipo}}.png" alt="Contact Person"> {{sugestao.tipo}}
+                    </div>
+                     <div class="chip">
+                        {{sugestao.dia}}
+                    </div>
+                </div>
+                <br>
+                <div class="input-field col s12 m12 l12">
+                    <span>Título</span>
+                    <input id="titulo" type="text" ng-value="sugestao.titulo" class="validate" disabled>                    
+                </div>
+                <br>                
+                <div class="input-field col s12">
+                    <span>Descrição</span>
+                    <textarea id="conteudo" class="materialize-textarea" disabled>{{sugestao.descricao}}</textarea>                    
+                </div>
+                <br>
+                <div class="col s12 m12 l12"> 
+                    <div class="switch">
+                        <label>
+                            Corrigido                                      
+                            <input type="checkbox" ng-true-value="'s'" ng-false-value="'n'" ng-checked="sugestao.corrigido == 's'" ng-model="sugestaoCorrigido" ng-click="alterarStatus()">
+                            <span class="lever"></span>                                        
+                        </label>
+                    </div>
+                </div>
+                <br>
+                
+                
+                <div class="col s12 m12 l12"> 
+                    <br><br>
+                    <a href="#/sugestoes" class="btn waves-effect left red">Voltar</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <tn-footer></tn-footer>
+</div>

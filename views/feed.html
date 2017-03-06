@@ -1,0 +1,51 @@
+<div ng-controller="feedCtrl" class="page-flexbox-wrapper">
+
+    <!-- Progresso -->
+    <tn-progress ng-show="progresso"></tn-progress>
+
+    <!-- Header -->
+    <header class="no-select">
+        <nav class="nav-wrapper teal">
+            <div class="container">
+                <a href="" class="center brand-logo light">TecNews</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <br>
+        <div class="container">
+            <!-- Cards -->
+            <div class="card horizontal" ng-repeat="publicacao in publicacoes | filter: pesquisa | filter:{tipo: pesquisaTipo} | filter:{ativo: 1}">
+                <div class="card-image hide-on-small-only">
+                    <img ng-if="publicacao.tipo != 'Liberação'" ng-src="resources/{{publicacao.tipo}}.jpg" width="300px" height="300px" alt="Error" />
+                    <img ng-if="publicacao.tipo == 'Liberação'" ng-src="resources/Liberacao.jpg" width="300px" height="300px" alt="Error" />
+                    <span class="card-title">{{publicacao.tipo}}</span>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h5>{{publicacao.titulo}}</h5>
+                        {{publicacao.conteudo}}
+                        <br><br>
+                        <b>Tags:</b>
+                        <br>{{publicacao.tag}}
+                    </div>
+                    <div class="card-action">
+                        <a href="#/publicacao/{{publicacao.id}}" class="teal-text">Leia Mais...</a>
+                        <span class="right teal-text text-lighten-2">{{ publicacao.data }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#pesquisa').focus();
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav('hide');
+    $('select').material_select();
+    $('.tooltipped').tooltip({delay: 50});
+});
+</script>

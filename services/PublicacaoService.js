@@ -12,7 +12,7 @@ app.factory('PublicacaoService',function($http){
                 url: 'ws/publicacao/selectAll.php'
             });
         },
-        selectPublicacao(id){
+        selectPublicacao: function(id){
             return $http({
                 method: 'post',
                 url: 'ws/publicacao/selectPublicacao.php',
@@ -26,11 +26,11 @@ app.factory('PublicacaoService',function($http){
                 data: {id: id, ativo: ativo}
             });
         },
-        insert: function(idUsuario, tipo, titulo, conteudo, tag){
+        insert: function(idUsuario, tipo, titulo, conteudo, tag, usuario){
             return $http({
                 method: 'post',
                 url: 'ws/publicacao/insert.php',
-                data: {idUsuario: idUsuario, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag}
+                data: {idUsuario: idUsuario, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag, usuario: usuario}
             });
         },
         update: function(idPublicacao, idUsuario, tipo, titulo, conteudo, tag){

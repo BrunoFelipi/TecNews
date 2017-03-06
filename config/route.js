@@ -39,4 +39,19 @@ app.config(function($routeProvider){
     .when('/removerEmail/:token', {
         templateUrl: 'views/removerEmail.html'
     })
+    .when('/sugestoes', {
+        templateUrl: 'views/sugestoes.html'
+    })
+    .when('/sugestoes/:id', {
+        templateUrl: 'views/openSugestao.html'
+    })
+    .when('/feed', {
+        templateUrl: 'views/feed.html'
+    })
+    .when('/emailsCadastrados', {
+        templateUrl: 'views/emailsCadastrados.html'
+    })
+    .when('/calendario', {
+        templateUrl: 'views/calendario.html'
+    })
 });

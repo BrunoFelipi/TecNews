@@ -10,29 +10,29 @@ app.controller('alterarSenhaCtrl',function($scope, $rootScope, UsuarioService, S
         var promise = UsuarioService.select();
         promise.then(function(response){
             $scope.usuarioLogado = response.data[0];
-        }, function(error){
-            toastr.error('Erro de conexão com o Servidor ao trazer usuario','Erro');
+        }, function(error){            
+            Materialize.toast('Erro de conexão com<br>o Servidor ao trazer usuário',2000);
         });
     };
 
     //alterarSenha
     $scope.alterarSenha = function(usuario){
-        if(usuario.senha != usuario.confSenha) {
-            toastr.error('As senhas não conferem','Erro');
+        if(usuario.senha != usuario.confSenha) {            
+            Materialize.toast('As senhas não conferem',2000);
             return;
         }
         var promise = UsuarioService.alterarSenha(usuario);
         promise.then(function(response){
-            if(response.data == 'false'){
-                toastr.error('A senha anterior informada está incorreta','Erro');
-            } else {
-                toastr.success('Senha alterada','Erro');
+            if(response.data == 'false'){                
+                Materialize.toast('A senha anterior informada<br>está incorreta',2000);
+            } else {                
+                Materialize.toast('Senha alterada',2000);
                 $scope.usuario.senhaAnterior = '';
                 $scope.usuario.senha = '';
                 $scope.usuario.confSenha = '';
             }
-        }, function(error){
-            toastr.error('Erro de conexão com o Servidor ao trazer usuario','Erro');
+        }, function(error){            
+            Materialize.toast('Erro de conexão com<br>o Servidor ao trazer usuário',2000);
         });
     };
 

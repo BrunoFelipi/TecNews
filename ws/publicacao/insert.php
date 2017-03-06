@@ -7,10 +7,11 @@
     $titulo = $data['titulo'];
     $conteudo = $data['conteudo'];
     $tag = $data['tag'];
+    $usuario = $data['usuario'];
     $datahora = 'now()';
     $ativo = '1';
 
-    $sql = "INSERT INTO publicacao VALUES (0,'$idUsuario','$tipo','$titulo','$conteudo','$tag',$datahora,'$ativo')";
+    $sql = "INSERT INTO publicacao VALUES (0,'$idUsuario','$tipo','$titulo','$conteudo','$tag',$datahora,'$usuario','$ativo')";
     $rs = mysqli_query($conexao, $sql);
 
     if($rs){

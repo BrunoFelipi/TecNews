@@ -18,30 +18,20 @@ $(document).ready(function() {
         <form name="formulario" ng-submit="logar(usuario)">
             <div class="container">
                 <div class="row">
-                    <div class="col s12 m10 l10 offset-m1 offset-l1">
-                        <div class="card horizontal">
-                            <!-- Card -->
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h4 class="light">Login</h4>
-                                    <br>
-                                    <div class="input-field">
-                                        <input id="email" type="email" name="email" class="validate" ng-model="usuario.email" required>
-                                        <label for="email" data-error="E-mail inválido">E-mail</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <input id="senha" type="password" name="senha" class="validate" ng-model="usuario.senha" minlength="8" required>
-                                        <label for="senha" data-error="A senha deve ter no mínimo 8 caracteres">Senha</label>
-                                    </div>
-                                </div>
-                                <div class="card-action">
-                                    <button type="submit" class="btn-flat teal-text waves-effect waves-teal">Logar</button>
-                                    <a href="#/registro" class="right teal-text btn-flat teal-text waves-effect waves-teal">Registre-se</a>
-                                </div>
-                            </div>
-                            <!-- /Card -->
-
+                    <div class="col s12 m8 l8 offset-m2 offset-l2">  
+                        <br>                                  
+                        <h4 class="light center">Login</h4>
+                        <br>
+                        <div class="input-field">
+                            <input id="email" type="email" name="email" class="validate" ng-model="usuario.email" required>
+                            <label for="email" data-error="E-mail inválido">E-mail</label>
                         </div>
+                        <div class="input-field">
+                            <input id="senha" type="password" name="senha" class="validate" ng-model="usuario.senha" minlength="8" required>
+                            <label for="senha" data-error="A senha deve ter no mínimo 8 caracteres">Senha</label>
+                        </div>				
+                        <button type="submit" class="btn-flat teal-text waves-effect waves-teal">Logar</button>
+                        <a href="#/registro" class="right teal-text btn-flat teal-text waves-effect waves-teal">Registre-se</a>
                     </div>
                 </div>
             </div>

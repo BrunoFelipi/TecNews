@@ -1,13 +1,12 @@
 <?php
 	$data = json_decode(file_get_contents('php://input'), true);
-	$de = $data['de'];
 	$para = $data['para'];
     $tipo = $data['tipo'];
     $titulo = $data['titulo'];
     $conteudo = $data['conteudo'];
     $tag = $data['tag'];
 	$nomeImagem = $data['nomeImagem'];
-	$token = md5($de);
+	$token = md5($para);
 
 	//Inclui o arquivo class.phpmailer.php localizado na pasta do phpmailer
 	//require_once("../phpmailer/class.phpmailer.php");
@@ -25,7 +24,7 @@
 		$mail->SMTPAuth = false;  // Usar autenticação SMTP (obrigatório para smtp.seudomínio.com.br)
 		$mail->SMTPSecure = 'tls'; //Tipo de segurança do SMTP
 		$mail->Port 	= 25; //  Usar 587 porta SMTP
-		$mail->Username = $de; // Usuário do servidor SMTP (endereço de email)
+		$mail->Username = $para; // Usuário do servidor SMTP (endereço de email)
 		$mail->CharSet = "UTF-8";
 		//$mail->Password = base64_decode('dmluaWNpdXM1'); // Senha do servidor SMTP (senha do email usado)
 
@@ -62,7 +61,7 @@
 							<div class='content'>
 								<table>
 									<tr>
-										<td><img src='../../resources/logo.png' style='width: 100%'/></td>
+										<td><a href='http://pcbnu006300:99/TecNews'><img src='../../resources/logo.png' style='width: 100%'/></a></td>
 									</tr>
 								</table>
 							</div><!-- /content -->
@@ -83,7 +82,9 @@
 
 								<table bgcolor=''>
 									<tr>
-										<td class='small' width='20%' style='vertical-align: top; padding-right:10px;'><img width='200px' height='200px' src='../../resources/$nomeImagem.jpg' /></td>
+										<td class='small' style='vertical-align: top; padding-right:10px;'>
+											<img src='../../resources/$nomeImagem.jpg' />
+										</td>
 										<td class='small' style='vertical-align: top'>
 											<h4><b>$tipo</b> - $titulo</h4>
 											<p class=''>$conteudo</p>
@@ -111,7 +112,7 @@
 									<tr>
 										<td align='center'>
 											<p>
-												<h5><a href='http://pcbnu006300/TecNews/#/removerEmail/$token'>Cancelar inscrição</a></h5>
+												<h5><a href='http://pcbnu006300:99/TecNews/#/removerEmail/$token'>Cancelar inscrição</a></h5>
 											</p>
 										</td>
 									</tr>

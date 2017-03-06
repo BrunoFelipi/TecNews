@@ -49,7 +49,7 @@ app.controller('listarCtrl',function($scope, $rootScope, PublicacaoService, Sess
     var usuarios = function(){
         var promise = UsuarioService.select();
         promise.then(function(response){
-            $scope.usuarioLogado = response.data[0];
+            $scope.usuarioLogado = response.data[0];            
             $scope.progresso = false;
         }, function(error){
             Materialize.toast('Erro de conexão com o Servidor ao carregar as publicações',2000);

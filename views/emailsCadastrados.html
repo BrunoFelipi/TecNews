@@ -1,0 +1,77 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.tooltipped').tooltip({delay: 0.5});
+    $('select').material_select();
+    $('#pesquisa').focus();
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav('hide');
+    $('.modal-trigger').leanModal();
+});
+</script>
+
+<style media="screen">
+    header,
+    main,
+    footer {
+        padding-left: 300px;
+    }
+    
+    @media only screen and (max-width: 992px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
+    }
+</style>
+
+<div ng-controller="emailsCadastradosCtrl" class="page-flexbox-wrapper">
+
+    <!-- Header -->
+    <header>
+        <tn-sidenav selected="emailsCadastrados" usuario-logado="usuarioLogado"></tn-sidenav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <br>
+        <div class="container">
+            <div class="row">
+
+                <h5 class="light">Emails Cadastrados</h5>
+                <hr>
+                <br>
+
+                <div class="col s12 m12 l6">
+                    <div class="input-field">
+                        <input id="pesquisa" ng-model="pesquisa" placeholder="Id, Email, Token..." type="text" class="validate">
+                        <label for="pesquisa">Pesquisar</label>                        
+                        <p>Total de <b>{{totalEmailsCadastrados}}</b> emails cadastrados</p>
+                    </div>
+                </div>
+                
+                <table class="responsive-table striped highlight">
+                    <thead>                                      
+                        <tr>                                                        
+                            <th class="center" data-field="id">id</th>
+                            <th class="center" data-field="email">Email</th>
+                            <th class="center" data-field="token">Token</th>                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="e in emails | filter: pesquisa">                            
+                            <td class="center">{{e.id}}</td>
+                            <td class="center">{{e.email}}</td>
+                            <td class="center">{{e.token}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <tn-footer></tn-footer>
+</div>

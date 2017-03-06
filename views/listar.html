@@ -21,7 +21,7 @@ $(document).ready(function() {
     <main>
         <br>
         <div class="container">
-            <h5>Listar</h5>
+            <h5 class="light">Listar</h5>
             <hr>
 			<br>
             <div class="row">
@@ -64,7 +64,7 @@ $(document).ready(function() {
 						<a href="" ng-show="show" ng-if="publicacao.ativo == 1" class="red-text" ng-click="desativar(publicacao)">Desativar</a>
 						<a href="" ng-show="show" ng-if="publicacao.ativo == 0" class="teal-text" ng-click="desativar(publicacao)">Ativar</a>
                         <a href="#modalExcluir" ng-click="setPublicacaoExcluir(publicacao)" ng-show="show" ng-if="publicacao.ativo == 0" class="red-text modal-trigger">Excluir</a>
-                        <span class="right teal-text text-lighten-2">{{publicacao.data}}</span>
+                        <span class="right teal-text text-lighten-2">{{publicacao.data}} - {{publicacao.usuario}}</span>
 					</div>
 				</div>
             </div>

@@ -48,23 +48,40 @@ app.controller('publicarCtrl', function($scope, $rootScope, PublicacaoService, S
 
     var enviarEmailNovaPublicacao = function(publicacao){
         $scope.usuariosEnviarEmail = [];
-
+        
         var promise = EmailService.selectAll();
 
         if(publicacao.tipo === 'Liberação'){
-            $scope.nomeImg = 'Liberacao';
+            $scope.nomeImg = 'Liberacao_250';
         } else {
-            $scope.nomeImg = publicacao.tipo;
+            $scope.nomeImg = publicacao.tipo + '_250';
+        }
+
+        $scope.tags = publicacao.tag.split(" ");
+        $scope.tagsSeparadas = '';
+
+        for(var i=0; i < $scope.tags.length; i++){            
+            
+            if(i == $scope.tags.length -1){
+                $scope.tagsSeparadas = $scope.tagsSeparadas + $scope.tags[i];
+            } else {
+                $scope.tagsSeparadas = $scope.tagsSeparadas + ($scope.tags[i] + " - ");
+            }                            
         }
 
         promise.then(function(response){
             $scope.usuariosEnviarEmail = response.data;
-
+            
             for(var i=0; i < $scope.usuariosEnviarEmail.length; i++){
 
-                var promise = EmailService.enviarEmailNovaPublicacao($scope.usuarioLogado.email, $scope.usuariosEnviarEmail[i].email, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags, $scope.nomeImg);
+                var promise = EmailService.enviarEmailNovaPublicacao($scope.usuariosEnviarEmail[i].email, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tagsSeparadas, $scope.nomeImg);
 
-                promise.then(function(response){
+                promise.then(function(response){                    
+
+                    if(response.data == 'false'){
+                        Materialize.toast('Erro ao<br>enviar email',2000);
+                    }
+
                 }, function(error){
                     Materialize.toast('Erro de conexão com<br>o Servidor',2000);
                 });
@@ -81,9 +98,9 @@ app.controller('publicarCtrl', function($scope, $rootScope, PublicacaoService, S
         var promise = EmailService.selectAll();
 
         if(publicacao.tipo === 'Liberação'){
-            $scope.nomeImg = 'Liberacao';
-        } else {
-            $scope.nomeImg = publicacao.tipo;
+            $scope.nomeImg = 'Liberacao_250';
+        } else {            
+            $scope.nomeImg = publicacao.tipo + '_250';
         }
 
         promise.then(function(response){
@@ -91,9 +108,13 @@ app.controller('publicarCtrl', function($scope, $rootScope, PublicacaoService, S
 
             for(var i=0; i < $scope.usuariosEnviarEmail.length; i++){
 
-                var promise = EmailService.enviarEmailEditarPublicacao($scope.usuarioLogado.email, $scope.usuariosEnviarEmail[i].email, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags, $scope.nomeImg);
+                var promise = EmailService.enviarEmailEditarPublicacao($scope.usuariosEnviarEmail[i].email, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags, $scope.nomeImg);
 
                 promise.then(function(response){
+
+                    if(response.data == 'false'){
+                        Materialize.toast('Erro ao<br>enviar email',2000);
+                    }
 
                 }, function(error){
                     Materialize.toast('Erro de conexão com<br>o Servidor',2000);
@@ -119,7 +140,7 @@ app.controller('publicarCtrl', function($scope, $rootScope, PublicacaoService, S
     }
 
     $scope.acao = function(publicacao){
-
+        
 		if(publicacao.tipo == null){
 			Materialize.toast('Selecione um tipo', 2000);
 			return;
@@ -129,11 +150,11 @@ app.controller('publicarCtrl', function($scope, $rootScope, PublicacaoService, S
 
         if($routeParams.tipo == 'add'){
 
-            var promise = PublicacaoService.insert($scope.usuarioLogado.id, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags);
+            var promise = PublicacaoService.insert($scope.usuarioLogado.id, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags, $scope.usuarioLogado.email);
             promise.then(function(response){
 
                 if(response.data == 'true') {
-                    Materialize.toast('<html>Publicação efetuada com <br>sucesso<html>',2000);
+                    Materialize.toast('Publicação efetuada com <br>sucesso',2000);
                     enviarEmailNovaPublicacao(publicacao);
                     $location.path('listar');
                 }
@@ -143,10 +164,10 @@ app.controller('publicarCtrl', function($scope, $rootScope, PublicacaoService, S
 
         } else if($routeParams.tipo == 'edit'){
 
-            var promise = PublicacaoService.update($routeParams.id, $scope.usuarioLogado.id, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags);
+            var promise = PublicacaoService.update($routeParams.id, $scope.usuarioLogado.id, publicacao.tipo, publicacao.titulo, publicacao.conteudo, $scope.tags, $scope.usuarioLogado.email);
             promise.then(function(response){
                 if(response.data == 'true') {
-                    Materialize.toast('<html>Publicação alterada com <br>sucesso</html>',2000);
+                    Materialize.toast('Publicação alterada com <br>sucesso',2000);
                     enviarEmailEditarPublicacao(publicacao);
                     $location.path('listar');
                 }

@@ -1,0 +1,111 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.tooltipped').tooltip({delay: 0.5});
+    $('select').material_select();
+    $('#pesquisa').focus();
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav('hide');
+    $('.modal-trigger').leanModal();
+});
+</script>
+
+<style media="screen">
+    header,
+    main,
+    footer {
+        padding-left: 300px;
+    }
+    
+    @media only screen and (max-width: 992px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
+    }
+</style>
+
+<div ng-controller="sugestaoCtrl" class="page-flexbox-wrapper">
+
+    <!-- Header -->
+    <header>
+        <tn-sidenav selected="sugestoes" usuario-logado="usuarioLogado"></tn-sidenav>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <br>
+        <div class="container">
+            <div class="row">
+
+                <h5 class="light">Sugestões</h5>
+                <hr>
+                <br>
+
+                <div class="col s12 m12 l6">
+                    <div class="input-field">
+                        <input id="pesquisa" ng-model="pesquisa" placeholder="Título, Data, Erro, Sugestão..." type="text" class="validate">
+                        <label for="pesquisa">Pesquisar</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m12 l3">
+                    <div class="input-field">
+                        <select ng-model="pesquisaTipo" class="icons">
+                          <option value="" selected>Todos</option>
+                          <option value="Erro" data-icon="resources/Erro.png" class="left circle">Erro</option>
+                          <option value="Sugestão" data-icon="resources/Sugestão.png" class="left circle">Sugestão</option>                          
+                        </select>
+                        <label>Tipo</label>
+                    </div>
+                </div>
+
+                <div class="col s12 m12 l3">
+                    <div class="input-field">
+                        <select ng-model="pesquisaCorrigido" class="icons">
+                          <option value="" selected>Todos</option>
+                          <option value="s" data-icon="resources/ok.png" class="left circle">Sim</option>
+                          <option value="n" data-icon="resources/nok.png" class="left circle">Não</option>                          
+                        </select>
+                        <label>Corrigido</label>
+                    </div>
+                </div>
+
+                <table class="responsive-table striped highlight">
+                    <thead>
+                        <tr>
+                            <th class="center" data-field="tipo"></th>
+                            <th class="center" data-field="id">id</th>
+                            <th class="center" data-field="titulo">Título</th>
+                            <th class="center" data-field="data">Data</th>
+                            <th class="center" data-field="corrigido">Corrigido</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="cursor" ng-repeat="sugestao in sugestoes | filter: pesquisa | filter:{tipo: pesquisaTipo} | filter:{corrigido: pesquisaCorrigido}" ng-click="openSugestao(sugestao.id)">
+                            <td class="center">
+                                <div class="chip">
+                                    <img src="resources/{{sugestao.tipo}}.png" class="tooltipped" data-position="bottom" data-tooltip="{{sugestao.tipo}}">
+                                </div>
+                            </td>
+                            <td class="center">{{sugestao.id}}</td>
+                            <td class="center">{{sugestao.titulo}}</td>
+                            <td class="center">{{sugestao.dia}}</td>
+                            <td class="center tooltipped" data-position="bottom" data-tooltip="Corrigido" ng-show="sugestao.corrigido == 's'">
+                                <img src="resources/ok.png" width="20px" height="20px" alt="Contact Person">
+                            </td>
+                            <td class="center tooltipped" data-position="bottom" data-tooltip="Em aberto" ng-show="sugestao.corrigido == 'n'">
+                                <img src="resources/nok.png" width="20px" height="20px" alt="Contact Person">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <tn-footer></tn-footer>
+</div>

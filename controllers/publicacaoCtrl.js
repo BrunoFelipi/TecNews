@@ -2,18 +2,27 @@ app.controller('publicacaoCtrl', function($scope, $rootScope, PublicacaoService,
 
     $scope.publicacao = {};
     $scope.tags = [];
+    $scope.nomeImagem = "";
 
     var init = function(){
         var promise = PublicacaoService.selectPublicacao($routeParams.id);
         promise.then(function(response){
-            if(response.data == 'false') {
-                toastr.error('Publicação não existe','Erro');
+            if(response.data == 'false') {                
+                Materialize.toast('Publicação não existe', 4000);
                 $location.path('home');
             }
             $scope.publicacao = response.data[0];
+
+            if($scope.publicacao.tipo == "Liberação"){
+                $scope.nomeImagem = "Liberacao";
+            } else {
+                $scope.nomeImagem = $scope.publicacao.tipo;
+            }
+
+            $scope.caminhoImagem = "resources/" + $scope.nomeImagem + ".jpg";
             separarTags();
-        }, function(error){
-            toastr.error('Erro de conexão com o servidor','Erro');
+        }, function(error){            
+            Materialize.toast('Erro de conexão com o<br>servidor', 4000);
         });
     };
 
@@ -30,6 +39,4 @@ app.controller('publicacaoCtrl', function($scope, $rootScope, PublicacaoService,
             }
         }
     }
-
-
 });

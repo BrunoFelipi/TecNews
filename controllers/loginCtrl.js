@@ -11,13 +11,13 @@ app.controller('loginCtrl', function($scope, $rootScope, $location, UsuarioServi
                 $location.path('listar');
                 $rootScope.usuario.nome = $scope.usuario.nome;
                 $rootScope.usuario.email = $scope.usuario.email;
-            } else {
-                toastr.error('Usuario ou Senha incorretos','Erro');
+            } else {                
+                Materialize.toast('Usuario ou Senha incorretos', 4000);
                 $scope.usuario = {};
                 $('#email').focus();
             }
-        }, function(error){
-            toastr.error('Erro de conexão com o Servidor','Erro');
+        }, function(error){            
+            Materialize.toast('Erro de conexão com o<br>servidor', 4000);
         });
     };
 

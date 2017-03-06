@@ -1,6 +1,7 @@
 <?php
 	$data = json_decode(file_get_contents('php://input'), true);
 	$email = $data['email'];
+	$nome = $data['nome'];
 
 	//Inclui o arquivo class.phpmailer.php localizado na pasta do phpmailer
 	//require_once("../phpmailer/class.phpmailer.php");
@@ -24,9 +25,9 @@
 
 		//Define o remetente
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		$mail->SetFrom($email, $email); //Seu e-mail
-		$mail->AddReplyTo($email, $email); //Seu e-mail
-		$mail->Subject = 'Solicitacao de Registro - TecNews';//Assunto do e-mail
+		$mail->SetFrom('tecnews@senior.com.br', 'TecNews'); //Seu e-mail
+		$mail->AddReplyTo('tecnews@senior.com.br', 'TecNews'); //Seu e-mail
+		$mail->Subject = 'TecNews - Solicitacao de Registro';//Assunto do e-mail
 
 
 		//Define os destinatário(s)
@@ -44,6 +45,85 @@
 
 		//Define o corpo do email
 		$mail->MsgHTML('Solicitacao de Registro para: '.$email.'.');
+
+		//Define o corpo do email
+		$mail->MsgHTML("
+
+			<body bgcolor='#FFFFFF' topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'>
+
+				<!-- HEADER -->
+				<table class='head-wrap'>
+					<tr>
+						<td></td>
+						<td class='header container' align=''>
+
+							<!-- /content -->
+							<div class='content'>
+								<table>
+									<tr>
+										<td><a href='http://pcbnu006300:99/TecNews'><img src='../../resources/logo.png'/></a></td>
+									</tr>
+								</table>
+							</div><!-- /content -->
+
+						</td>
+						<td></td>
+					</tr>
+				</table><!-- /HEADER -->
+
+				<!-- BODY -->
+				<table class='body-wrap' bgcolor=''>
+					<tr>
+						<td></td>
+						<td class='container' align='' bgcolor='#FFFFFF'>
+
+							<!-- content -->
+							<div class='content'>
+
+								<table bgcolor=''>
+									<tr>
+										<td style='vertical-align: top'>
+											<p>Olá, <b>$nome</b> solicitou um registro ao <b style='color: #03a39b'>TecNews</b>. 
+											<br><br>
+											Acesse o site para responder a solicitação.
+											<br>
+											<br>											
+											</p>											
+										</td>
+									</tr>
+								</table>
+
+							</div><!-- /content -->
+						</td>
+						</tr>
+				</table><!-- /BODY -->
+
+				<!-- FOOTER -->
+				<table class='footer-wrap'>
+					<tr>
+						<td></td>
+						<td class='container'>
+
+							<!-- content -->
+							<div class='content'>
+								<table>
+									<tr>
+										<td align='center'>
+											<p>
+												
+											</p>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+						<td></td>
+					</tr>
+				</table>
+			</body>
+
+						");
+
 
 		////Caso queira colocar o conteudo de um arquivo utilize o método abaixo ao invés da mensagem no corpo do e-mail.
 		//$mail->MsgHTML(file_get_contents('arquivo.html'));

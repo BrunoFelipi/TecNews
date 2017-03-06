@@ -1,0 +1,74 @@
+  <div ng-controller="cadastroCtrl">
+	<script>
+        $(document).ready(function(){
+            $("#email").select();
+            $("#nome").select();
+            $("#senha").select();
+            $("#confirmarSenha").select();
+            $("#nome").focus();
+            $('input#nome, input#email, input#senha, input#confirmarSenha').characterCounter();
+        });
+	</script>
+
+	<!-- header -->
+	<header class="no-select">
+
+	</header>
+
+	<!-- Main-->
+	<main>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          <form ng-submit="cadastrar(usuario)">
+
+            <div class="card">
+              <div class="card-image">
+                <img src="resources/images.jpg">
+                <span class="card-title">
+                  <h2>Cake's</h2>
+                </span>
+              </div>
+
+              <div class="card-content">
+                <div class="input-field">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input class="validate" id="nome" type="text" ng-model="usuario.nome" length="50" maxlength="50" required>
+                  <label for="Nome">Nome</label>
+                </div>
+
+                <div class="input-field">
+                  <i class="material-icons prefix">email</i>
+                  <input class="validate" id="email" type="email"ng-model="usuario.email" length="50" maxlength="50" required>
+                  <label for="email">Email</label>
+                </div>
+                <div class="input-field">
+                  <i class="material-icons prefix">vpn_key</i>
+                  <input id="senha" type="password" ng-model="usuario.senha" length="50" maxlength="50" required>
+                  <label for="senha">Senha</label>
+                </div>
+                <div class="input-field">
+                  <i class="material-icons prefix">vpn_key</i>
+                  <input id="confirmarSenha" type="password" ng-model="usuario.confirmarSenha" length="50" maxlength="50" required>
+                  <label for="confirmarSenha">Confirmar Senha</label>
+                </div>
+              </div>
+
+            <div class="card-action">
+
+              <a href="#/login" class="waves-effect btn brown darken-1"><i class="material-icons prefix">arrow_back</i></a>
+
+              <div class="right">
+                <button type="submit" class="waves-effect btn red lighten-1">Confirmar</button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+	<script type="text/javascript" src="js/datapicker.js"></script>
+</div>

@@ -34,26 +34,57 @@ app.factory('EmailService', function($http){
                 data: {email: email, nome: nome}
             });
         },
-        enviarEmailNovaPublicacao: function(de, para, tipo, titulo, conteudo, tag, nomeImagem){
+        enviarEmailNovaPublicacao: function(para, tipo, titulo, conteudo, tag, nomeImagem){
             return $http({
                 method: 'post',
                 url: 'ws/email/enviarEmailNovaPublicacao.php',
-                data: {de: de, para: para, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag, nomeImagem: nomeImagem}
+                data: {para: para, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag, nomeImagem: nomeImagem}
             });
         },
 
-        enviarEmailEditarPublicacao: function(de, para, tipo, titulo, conteudo, tag, nomeImagem){
+        enviarEmailEditarPublicacao: function(para, tipo, titulo, conteudo, tag, nomeImagem){
             return $http({
                 method: 'post',
                 url: 'ws/email/enviarEmailEditarPublicacao.php',
-                data: {de: de, para: para, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag, nomeImagem: nomeImagem}
+                data: {para: para, tipo: tipo, titulo: titulo, conteudo: conteudo, tag: tag, nomeImagem: nomeImagem}
             });
         },
+
+        enviarEmailCadastroAceito: function(email, nome){
+            return $http({
+                method: 'post',
+                url: 'ws/email/enviarEmailCadastroAceito.php',
+                data: {email: email, nome: nome}
+            });
+        },
+        
+        enviarEmailCadastroRejeitado: function(email, nome){
+            return $http({
+                method: 'post',
+                url: 'ws/email/enviarEmailCadastroRejeitado.php',
+                data: {email: email, nome: nome}
+            });
+        },
+        
         deleteEmail: function(email){
             return $http({
                 method: 'post',
                 url: 'ws/email/delete.php',
                 data: {email: email}
+            });
+        },
+        
+        selectAllEmailsCadastrados: function(){
+            return $http({
+                method: 'post',
+                url: 'ws/email/selectAllEmailsCadastrados.php'
+            });
+        },
+
+        selectQtdEmailsCadastrados: function(){
+            return $http({
+                method: 'post',
+                url: 'ws/email/selectQtdEmailsCadastrados.php'
             });
         },
 

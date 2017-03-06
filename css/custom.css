@@ -74,3 +74,8 @@
  .underline:hover {
      text-decoration: underline;
  }
+
+
+ .cursor {
+     cursor: pointer;
+ }

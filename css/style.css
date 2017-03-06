@@ -1,0 +1,34 @@
+#add {
+    position: absolute;
+    top: 35px;
+    z-index: 999;
+    transform: translate(-50%, 0%);
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.borderred {
+    border-right: solid #f44336;
+}
+
+.bordergreen {
+    border-right: solid #4caf50;
+}
+
+#progress {
+    position: absolute;
+    top: 55px;
+}
+
+@media only screen and (max-width: 500px) {
+    #progress {
+        top: 49px;
+    }
+}

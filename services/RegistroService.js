@@ -7,11 +7,11 @@ app.factory('RegistroService', function($http){
                 data: {email: email}
             });
         },
-        email: function(email){
+        email: function(email, nome){
             return $http({
                 method: 'post',
                 url: 'ws/registro/registro.php',
-                data: {email: email}
+                data: {email: email, nome: nome}
             });
         },
         select: function(){
@@ -24,6 +24,13 @@ app.factory('RegistroService', function($http){
             return $http({
                 method: 'post',
                 url: 'ws/registro/desativar.php',
+                data: usuario
+            });
+        },
+        ativar: function(usuario){
+            return $http({
+                method: 'post',
+                url: 'ws/registro/ativar.php',
                 data: usuario
             });
         }

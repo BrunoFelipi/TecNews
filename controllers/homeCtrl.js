@@ -12,7 +12,7 @@ app.controller('homeCtrl',function($scope, PublicacaoService, toastr, $location,
             $scope.publicacoes = response.data;
             $scope.progresso = false;
         }, function(error){
-            toastr.error('Erro de conexão com o Servidor ao carregar as publicações','Erro');
+            Materialize.toast('Erro de conexão com o<br>servidor ao carregar<br>as publicações', 4000);
             $scope.progresso = false;
         });
     };

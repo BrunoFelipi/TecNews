@@ -9,8 +9,8 @@ app.controller('emailCtrl',function($scope, $location, $filter, toastr, EmailSer
 
                 var promise = EmailService.insert($scope.email);
                 promise.then(function(response){
-                    if(response.data == 'true'){
-                        toastr.success('Email cadastrado com sucesso','Sucesso');
+                    if(response.data == 'true'){                        
+                        Materialize.toast('Email cadastrado com sucesso', 4000);
 
                         var nome = $scope.email.split("@")[0];
 
@@ -19,22 +19,22 @@ app.controller('emailCtrl',function($scope, $location, $filter, toastr, EmailSer
                         promise.then(function(response){
                             if(response.data == 'true'){
                                 $location.path('home');
-                            } else {
-                                toastr.error('Erro ao enviar email','Erro');
+                            } else {                                
+                                Materialize.toast('Erro ao enviar email', 4000);
                             }
                         }, function(error){
                             Materialize.toast('Erro de conexão com<br>o Servidor',2000);
                         });
 
-                    } else {
-                        toastr.error('Erro ao cadastrar email','Erro');
+                    } else {                        
+                        Materialize.toast('Erro ao cadastrar email',2000);    
                     }
                 }, function(error){
                     Materialize.toast('Erro de conexão com<br>o Servidor',2000);
                 });
 
-            } else {
-                toastr.error('Email já cadastrado','Erro');
+            } else {                
+                Materialize.toast('Email já cadastrado', 4000);
             }
         }, function(error){
             Materialize.toast('Erro de conexão com<br>o Servidor',2000);

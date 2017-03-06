@@ -18,32 +18,24 @@ $(document).ready(function() {
         <form name="formulario" ng-submit="enviar()">
             <div class="container">
                 <div class="row">
-                    <div class="col s12 m10 l10 offset-m1 offset-l1">
-                        <div class="card horizontal">
+                    <div class="col s12 m8 l8 offset-m2 offset-l2">
+                        <br>
+                        <h5 class="light">Registro</h5>
+                        <p>
+                            Para realizar o registro é necessária a abertura de uma solicitação inserindo seu e-mail no campo abaixo. Após clicar em
+                            enviar, a solicitação será encaminhada para o administrador, será analisada e você receberá seus
+                            dados de acesso.
+                        </p>
 
-                            <!-- Card -->
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h5>Registro</h5>
-                                    <p>
-                                        Para realizar o registro é necessária a abertura de uma solicitação inserindo seu e-mail no campo abaixo. Após clicar em enviar, a solicitação
-                                        será encaminhada para o administrador, será analisada e você receberá seus dados de acesso.
-                                    </p>
-
-                                    <br>
-                                    <div class="input-field">
-                                        <input id="email" type="email" name="email" class="validate" ng-model="email" required>
-                                        <label for="email" data-error="E-mail inválido">E-mail</label>
-                                    </div>
-                                </div>
-                                <div class="card-action">
-                                    <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Enviar</button>
-                                    <a href="#/login" class="waves-effect waves-red btn-flat right red-text">Cancelar</a>
-                                </div>
-                            </div>
-                            <!-- /Card -->
-
+                        <br>
+                        <div class="input-field">
+                            <input id="email" type="email" name="email" class="validate" ng-model="email" required>
+                            <label for="email" data-error="E-mail inválido">E-mail</label>
                         </div>
+
+                        <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Enviar</button>
+                        <a href="#/login" class="waves-effect waves-red btn-flat right red-text">Cancelar</a>
+
                     </div>
                 </div>
             </div>

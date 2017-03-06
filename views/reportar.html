@@ -1,12 +1,15 @@
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#texto').focus();
+    $('#conteudo').focus();
+    $('#titulo').focus();
     $(".button-collapse").sideNav();
     $('.button-collapse').sideNav('hide');
-    $('#texto').characterCounter();
+    $('#conteudo').characterCounter();
+    $('#titulo').characterCounter();
+    $('select').material_select();
 });
 </script>
-<div class="page-flexbox-wrapper">
+<div ng-controller="sugestaoCtrl" class="page-flexbox-wrapper">
 
     <!-- Header -->
     <header>
@@ -14,35 +17,40 @@ $(document).ready(function() {
     </header>
 
     <main>
-        <form name="form">
+        <form name="form" ng-submit="reportar()">
             <div class="container">
-                <div class="row">
-                    <div class="col s12 m10 l10 offset-m1 offset-l1">
-                        <div class="card horizontal">
-                            <div class="card-image hide-on-small-only">
-                                <img src="resources/Ajustes.jpg" width="350px" height="350px" alt="Error" />
-                                <span class="card-title">TecNews</span>
-                            </div>
+                <div class="row">                    
+					<br>
+					<h5 class="center light">Reporte Erro/Sugestão</h5>
+					<br>
 
-                            <!-- Card -->
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h5>Reporte Erro/Sugestão</h5>
-                                    <br>
-                                    <div class="input-field">
-                                        <textarea id="texto" type="text" name="texto" length="200" maxlength="200" class="materialize-textarea" required></textarea>
-                                        <label for="texto">Erro/Sugestão</label>
-                                    </div>
-                                </div>
-                                <div class="card-action">
-                                    <button type="submit" class="waves-effect waves-teal btn-flat teal-text">Enviar</button>
-                                    <a href="#/home" class="right btn-flat red-text waves-effect waves-red">Cancelar</a>
-                                </div>
-                            </div>
-                            <!-- /Card -->
+					<div class="row">
+						
+						<select class="icons" ng-model="sugestao.tipo">
+							<option value="" disabled ng-selected="sugestao.tipo==null">Selecione um tipo</option>                                        
+							<option value="Erro" ng-selected="sugestao.tipo=='Erro'" data-icon="resources/Erro.png" class="left circle">Erro</option>
+							<option value="Sugestão" ng-selected="sugestao.tipo=='Sugestao'" data-icon="resources/Sugestão.png" class="left circle">Sugestão</option>
+						</select>                            
+						
+					</div>
 
-                        </div>
-                    </div>
+					<div class="row">
+						<div class="input-field">
+							<input id="titulo" type="text" name="titulo" length="100" maxlength="100" ng-model="sugestao.titulo" required>
+							<label for="titulo">Titulo</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field">
+							<textarea id="conteudo" type="text" name="conteudo" length="200" maxlength="200" class="materialize-textarea" ng-model="sugestao.conteudo"
+								required></textarea>
+							<label for="texto">Descrição</label>
+						</div>
+					</div>
+					<br>
+					<button type="submit" class="waves-effect waves-teal btn-flat teal-text">Enviar</button>
+					<a href="#/home" class="right btn-flat red-text waves-effect waves-red">Cancelar</a>                    
                 </div>
             </div>
         </form>

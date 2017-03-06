@@ -14,11 +14,18 @@ app.factory('UsuarioService', function($http){
                 data: usuario
             });
         },
-        jaExiste: function(usuario){
+        jaCadastrado: function(email){
             return $http({
                 method: 'post',
-                url: 'ws/usuario/jaExiste.php',
-                data: usuario
+                url: 'ws/usuario/jaCadastrado.php',
+                data: {email: email}
+            });
+        },
+        cadastroPendente: function(email){
+            return $http({
+                method: 'post',
+                url: 'ws/usuario/cadastroPendente.php',
+                data: {email: email}
             });
         },
         select: function(){

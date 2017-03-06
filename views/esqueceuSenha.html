@@ -1,0 +1,54 @@
+<div ng-controller="esqueceuSenhaCtrl">
+	<script>
+		$(document).ready(function(){
+			$('input#email').characterCounter();
+			$("#email").select();
+  		  	$("#email").focus();
+		});
+
+	</script>
+
+	<!-- header -->
+	<header class="no-select">
+
+	</header>
+
+	<!-- Main-->
+	<main>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          <form ng-submit="enviarEmail(email)">
+
+            <div class="card">
+              <div class="card-image">
+                <img src="resources/images.jpg">
+                <span class="card-title">
+                  <h2>Cake's</h2>
+                </span>
+              </div>
+
+              <div class="card-content">
+                <div class="input-field">
+                  <i class="material-icons prefix">email</i>
+                  <input class="validate" id="email" ng-model="email" length="50" maxlength="50" type="email">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+
+            <div class="card-action">
+				<a href="#/login" class="waves-effect btn brown darken-1"><i class="material-icons prefix">arrow_back</i></a>
+				<div class="right">
+                	<button type="submit" class="waves-effect btn red lighten-1">Enviar email</button>
+              	</div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+	<script type="text/javascript" src="js/datapicker.js"></script>
+</div>

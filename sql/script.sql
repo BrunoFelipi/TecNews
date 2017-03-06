@@ -31,3 +31,12 @@ create table email(
   email varchar(50),
   token varchar(32)
 );
+
+create table sugestao (
+    id int(8) primary key auto_increment,
+    tipo varchar(20),
+    titulo varchar(100),
+    descricao varchar(1000),
+    dia datetime,
+    corrigido char(1)
+);

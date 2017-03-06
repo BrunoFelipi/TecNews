@@ -7,7 +7,7 @@
             from tag group by id_publicacao) as t where p.id = t.id_publicacao order by id desc limit 200";
 */
 
-    $sql = "select id, tipo, titulo, data, concat(substr(conteudo,1,150),'...') as conteudo, tag, ativo from publicacao order by id desc;";
+    $sql = "select id, tipo, titulo, data, concat(substr(conteudo,1,150),'...') as conteudo, tag, usuario, ativo from publicacao order by id desc;";
 
     $rs = mysqli_query($conexao, $sql);
 

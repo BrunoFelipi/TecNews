@@ -1,7 +1,7 @@
 <?php
     include '../conexao.php';
 
-    $sql = "select id,email,ativo from registro where ativo = 1";
+    $sql = "select id,email,ativo from registro where ativo = 'nao'";
 
     $rs = mysqli_query($conexao, $sql);
 

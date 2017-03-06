@@ -7,7 +7,7 @@
                 <div class="userView">
                     <img class="background" src="resources/teal-bk.png">
                     <a href=""><img class="circle" src="resources/keyboard.png"></a>
-                    <a href=""><span class="white-text name">TecNews</span></a>
+                    <a href=""><span class="light white-text name">TecNews</span></a>
                     <a href=""><span class="white-text email">{{usuarioLogado.email}}</span></a>
                 </div>
             </li>
@@ -15,6 +15,8 @@
             <li ng-class="{'active': selected=='publicar'}"><a class="waves-effect" href="#/publicar/add">Publicar</a></li>
             <li ng-class="{'active': selected=='usuarios'}"><a class="waves-effect" href="#/usuarios">Usuários</a></li>
             <li ng-class="{'active': selected=='senhas'}"><a class="waves-effect" href="#/alterarSenha">Senhas</a></li>
+            <li ng-class="{'active': selected=='sugestoes'}"><a class="waves-effect" href="#/sugestoes">Sugestões</a></li>            
+            <li ng-class="{'active': selected=='emailsCadastrados'}"><a class="waves-effect" href="#/emailsCadastrados">Emails Cadastrados</a></li>
             <li class="divider"></li>
             <li class><a class="waves-effect" ng-click="sair()">Sair</a></li>
         </ul>
